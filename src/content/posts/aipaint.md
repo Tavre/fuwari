@@ -3,7 +3,7 @@
 title: 使用百度飞浆 部署你的在线AI绘画
 published: 2025-08-04
 description: '自建一个云端无限制的SD WebUI 小白也能轻松上手'
-image: 'https://cdn.jsdelivr.net/gh/Tavre/test_github_imgwarehouse@main/images/20250611135557690.webp'
+image: 'https://r2.tshd.lat/images/1754592402_b5ff1735db2a3f9f.webp'
 tags: [AI绘画, 白嫖, 云算力,飞浆, 教程,免费]
 category: '教程'
 draft: false 
@@ -23,7 +23,7 @@ lang: ''
 
 点击右上角“登录”按钮
 
-![](https://cdn.jsdelivr.net/gh/TenKavr/test_gi@main/images/2025-08-01-19-48-27-image.png)
+![](https://r2.tshd.lat/images/1754592113_7bb2fdb5ff0e5445.webp)
 
 使用百度账户登录即可 然后我们点击下方链接
 
@@ -31,17 +31,17 @@ lang: ''
 
  紧接着点击右上角“运行一下”
 
-![](https://cdn.jsdelivr.net/gh/TenKavr/test_gi@main/images/2025-08-01-19-47-15-image.png)
+![](https://r2.tshd.lat/images/1754592115_e162625005a263a8.webp)
 
 紧接着点击“创建”
 
-![](https://cdn.jsdelivr.net/gh/TenKavr/test_gi@main/images/2025-08-01-19-49-22-image.png)
+![](https://r2.tshd.lat/images/1754592118_e4b9983d3113e613.webp)
 
 然后再次点击右上角“专业开发”
 
-![](https://cdn.jsdelivr.net/gh/TenKavr/test_gi@main/images/2025-08-01-19-49-57-image.png)
+![](https://r2.tshd.lat/images/1754592120_a6ee150666b6ac6f.webp)
 
-![](https://cdn.jsdelivr.net/gh/TenKavr/test_gi@main/images/2025-08-01-19-50-16-image.png)
+![](https://r2.tshd.lat/images/1754592122_98d63d93c67f23ee.webp)
 
 这里的配置 选择V100的16G或32G **不要使用CPU（即基础版）**！ 否则你可能会遇到各种奇奇怪怪的问题
 
@@ -49,35 +49,35 @@ lang: ''
 > 
 > 或者直接金钱解决问题 (呜呜呜 我恨有钱人）
 
-进入到页面之后 根据图片提示双击文件![](https://cdn.jsdelivr.net/gh/TenKavr/test_gi@main/images/2025-08-01-19-56-19-image.png)
+进入到页面之后 根据图片提示双击文件![](https://r2.tshd.lat/images/1754592124_c11da0bc76621939.webp)
 
 这里右边加载会等待5分钟左右 请耐心等待
 
 接下来根据图片提示 按步骤操作
 
-![](https://cdn.jsdelivr.net/gh/TenKavr/test_gi@main/images/2025-08-01-19-59-23-image.png)
+![](https://r2.tshd.lat/images/1754592127_da37c909576faa83.webp)
 
-![](https://cdn.jsdelivr.net/gh/TenKavr/test_gi@main/images/2025-08-01-20-00-28-image.png)
+![](https://r2.tshd.lat/images/1754592371_da589a4b55594af3.webp)
 
 点击“激活端口” 然后复制命令 再点击中上区域的“+”
 
 紧接着 选择“终端”
 
-![](https://cdn.jsdelivr.net/gh/TenKavr/test_gi@main/images/2025-08-01-20-01-36-image.png)
+![](https://r2.tshd.lat/images/1754592128_593a85f9b02621c8.webp)
 
 将我们复制的命令粘贴进去 不一会 即可在终端中看到外部链接
 
-![](https://cdn.jsdelivr.net/gh/TenKavr/test_gi@main/images/2025-08-01-20-03-41-image.png)
+![](https://r2.tshd.lat/images/1754592130_9c35894eb50d492c.webp)
 
 我们访问 即使sd webui画面 现在就可以开始你的创作了！
 
-![](https://cdn.jsdelivr.net/gh/TenKavr/test_gi@main/images/2025-08-01-20-05-48-image.png)
+![](https://r2.tshd.lat/images/1754592133_247f0ed93846778f.webp)
 
 ## 自定义模型
 
 回到我们启动webui的页面
 
-![](https://cdn.jsdelivr.net/gh/TenKavr/test_gi@main/images/2025-08-01-20-07-32-image.png)
+![](https://r2.tshd.lat/images/1754592135_268c0041864fb61b.webp)
 
 根据图片提示 点击对应的对话框
 
