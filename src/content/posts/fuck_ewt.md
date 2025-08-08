@@ -39,7 +39,7 @@ lang: ''
 
 ```javascript
 // ==UserScript==
-// @name         duck for ewt
+// @name         fuck for ewt
 // @namespace    http://tampermonkey.net/
 // @version      1.2.0
 // @description  支持视频自动切换、自动确认随机弹出的检测点、自动2倍速播放
@@ -58,7 +58,7 @@ lang: ''
     let titleBar = null;
     let messageList = null;
 
-    let DraggableModalTitle = "fuck for ewts"
+    let DraggableModalTitle = "fuck for ewt"
 
     function Wait(ms)
     {

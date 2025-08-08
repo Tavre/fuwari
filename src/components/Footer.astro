@@ -4,6 +4,10 @@ import { profileConfig } from "../config";
 import { url } from "../utils/url-utils";
 
 const currentYear = new Date().getFullYear();
+// 站点运行时间计算
+const siteStartDate = new Date('2025-08-04T00:00:00');
+const now = new Date();
+const runDays = Math.floor((now.getTime() - siteStartDate.getTime()) / (1000 * 60 * 60 * 24));
 ---
 
 <!--<div class="border-t border-[var(&#45;&#45;primary)] mx-16 border-dashed py-8 max-w-[var(&#45;&#45;page-width)] flex flex-col items-center justify-center px-6">-->
@@ -17,5 +21,8 @@ const currentYear = new Date().getFullYear();
         Powered by
         <a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://astro.build">Astro</a> &
         <a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://github.com/saicaca/fuwari">Fuwari</a>
+        <div class="mt-2 text-xs text-gray-500 dark:text-gray-400">
+            已运行 <span id="site-run-days">{runDays}</span> 天
+        </div>
     </div>
 </div>
