@@ -1,7 +1,7 @@
 # About
 本博客使用的为：[Fuwari](https://github.com/Tavre/fuwari).
 自用且魔改于Fuwari
-::github{repo="saicaca/fuwari"}
+::github{repo="Tavre/fuwari"}
 
 > ## 技术支持
 本站由[cloudflare](https://www.cloudflare.com/)
