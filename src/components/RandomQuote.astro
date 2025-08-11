@@ -1,0 +1,129 @@
+---
+// 随机一言卡片组件
+---
+
+<div id="random-quote-card" class="card-base p-4 mb-4 onload-animation">
+    <div class="flex items-center justify-between">
+        <div class="flex-1 min-w-0">
+            <div id="quote-content" class="text-75 text-base leading-relaxed italic">
+                <div class="animate-pulse">
+                    <div class="h-4 bg-gray-300 dark:bg-gray-600 rounded w-3/4"></div>
+                </div>
+            </div>
+        </div>
+        <div class="flex-shrink-0 ml-4">
+            <button id="refresh-quote" class="btn-plain scale-animation rounded-lg w-8 h-8 active:scale-90 opacity-50 hover:opacity-100" title="刷新">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+// 获取随机一言的函数
+async function fetchRandomQuote() {
+    const quoteContent = document.getElementById('quote-content');
+    const refreshBtn = document.getElementById('refresh-quote');
+    
+    if (!quoteContent || !refreshBtn) return;
+    
+    try {
+        // 显示加载状态
+        quoteContent.innerHTML = `
+            <div class="animate-pulse">
+                <div class="h-4 bg-gray-300 dark:bg-gray-600 rounded w-3/4"></div>
+            </div>
+        `;
+        refreshBtn.style.opacity = '0.5';
+        refreshBtn.style.pointerEvents = 'none';
+        
+        // 从本地yan.txt文件获取随机一言
+        const response = await fetch('/yan.txt');
+        
+        if (!response.ok) {
+            throw new Error(`文件读取失败: ${response.status}`);
+        }
+        
+        const fileContent = await response.text();
+        const lines = fileContent.split('\n').filter(line => line.trim().length > 0);
+        
+        // 验证文件内容
+        if (!lines || lines.length === 0) {
+            throw new Error('文件内容为空');
+        }
+        
+        // 随机选择一行
+        const randomIndex = Math.floor(Math.random() * lines.length);
+        const text = lines[randomIndex]
+        
+        // 显示内容 - 使用textContent确保安全显示纯文本
+        quoteContent.textContent = text.trim();
+        
+    } catch (error) {
+        console.error('获取一言失败:', error);
+        
+        // 根据错误类型显示不同的fallback内容
+        let fallbackQuote = '生活就像海洋，只有意志坚强的人才能达到彼岸。';
+        
+        if (error.message.includes('文件读取失败')) {
+            fallbackQuote = '文件读取失败，无法获取新的一言。';
+        } else if (error.message.includes('文件内容为空')) {
+            fallbackQuote = '一言文件为空，请检查文件内容。';
+        }
+        
+        quoteContent.textContent = fallbackQuote;
+    } finally {
+        // 恢复按钮状态
+        refreshBtn.style.opacity = '1';
+        refreshBtn.style.pointerEvents = 'auto';
+    }
+}
+
+// 页面加载时获取一言
+document.addEventListener('DOMContentLoaded', fetchRandomQuote);
+
+// 刷新按钮点击事件
+const refreshBtn = document.getElementById('refresh-quote');
+if (refreshBtn) {
+    refreshBtn.addEventListener('click', fetchRandomQuote);
+}
+
+// 支持Swup页面切换
+if (window.swup) {
+    window.swup.hooks.on('page:view', fetchRandomQuote);
+}
+</script>
+
+<style>
+#random-quote-card {
+    transition: all 0.3s ease;
+}
+
+#random-quote-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+#refresh-quote {
+    transition: all 0.2s ease;
+}
+
+#refresh-quote:hover {
+    transform: rotate(180deg);
+}
+
+.animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: .5;
+    }
+}
+</style>
