@@ -318,7 +318,7 @@ lang: ''
 
 点击油猴插件
 
-![](https://tc.ddxxgcgf.com//images/6897748c1b91a_1754756236.webp)
+![](https://v2-cp.ssscdn.com/ksc2/U3lIk-WDJmK87Mcf3xx-f5_RlXUk5JIvH9byPUowWQ62IRwzkXrwvPxz9f7tvIXnP3R4ZL4GWmfc8yfse4wb-EgsS7w16E0kAKc7wVyvmv7hte71GJbZ79DkJLxWVeD5.png?pkey=AAVx6-SI5hU0IzoLMNtmmVhkBjPHc9eCDpYJnWcpV4jwlY896I2rSjMw55ZlsY7Mj5XjnuhM06SQoJFk7RLS8VuG_L5vnjJ9DE2qz4mzHhq4AL9BzLTFxllIHojFZnzMx6w)
 
 点击添加新脚本
 
@@ -332,7 +332,7 @@ lang: ''
 
 当出现弹窗时 则证明程序已启动
 
-![](https://tc.ddxxgcgf.com//images/6897748c3dc50_1754756236.webp)
+![](https://v2-cp.ssscdn.com/ksc2/zJnEJMm9AJPsS4_Mhpt7LxVctzqM_t8PlqSwtQy9Knj3EX18gcOIMvlHzXNCZPJeLPHaAOVgN3Wsw8XDY9Racn2d2MC-fFLIB1-QExVl07eVdTDtjFMVRiEaxupWoQJi.png?pkey=AAXo6-Z916OTVEugofMYqHfkkr6B6aYmNuY2d5J-y_NqUE9Wz__ln8GcDoof_Hza-o0NhzslmWzrzKOyQ4Chgt0MxoOHgaRowiAcoxYTUc6khV1rOz956XEllCsdxmiE2a0)
 
 那你就可以愉快的挂机了！！！
 
