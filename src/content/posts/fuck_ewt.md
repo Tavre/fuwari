@@ -2,7 +2,7 @@
 title: 使用浏览器脚本 半自动刷课
 published: 2025-08-08
 description: '通过浏览器脚本 实现升学e网通半自动刷课 挂机即可'
-image: 'https://tc.ddxxgcgf.com//images/689775704f882_1754756464.webp'
+image: 'https://channelr.photo.store.qq.com/psc?/channel/NaDwC23LjvXqrn3RH.9z8V1oKhjwJZvkqxzCCuhNy.oO*RKzElLmJBDdW0zftbLxYB8IfpdpJbHHcLfsR69guBR2YQZPBqWPdc7HznBkCj0!/o&bo=.wv6BfsL.gURADc!'
 tags: [升学e网通,挂机,脚本,油猴]
 category: '教程'
 draft: false 
