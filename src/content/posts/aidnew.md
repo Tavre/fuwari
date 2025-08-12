@@ -1,5 +1,5 @@
 ---
-title: aidnew
+title: 使用腾讯CNB构建属于你的AI绘画
 published: 2025-08-12
 description: '使用cnb平台构建AI绘画 纯白嫖'
 image: 'https://img.alicdn.com/imgextra/i1/O1CN01EkVkR91kxYOYdWMvL_!!2215879134750-0-fleamarket.jpg'
