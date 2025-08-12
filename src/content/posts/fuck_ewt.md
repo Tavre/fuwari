@@ -2,7 +2,7 @@
 title: 使用浏览器脚本 半自动刷课
 published: 2025-08-08
 description: '通过浏览器脚本 实现升学e网通半自动刷课 挂机即可'
-image: 'https://v1-cp.ssrcdn.com/ksc2/0Y8kzfqfbY3bRqOnSzIQXzoylzmTJWngZPRuH8_pG0VcDTC899gGwl-yfRcWgs1tUyUsj4xfsInrWk8UjXlN5lCuOFXdU-LjU3Wxumw2-fwiXpLrNw6f77vSovay2sva.jpeg?pkey=AAX-jlhJm9W5Cj9RHFYOdYBRq1xjFK3Lae9P_enM2ZnebupG_dZqziM0JRU8GO357RWPyai-Kp7s67tmuaZCmIYG14FutjDFszR5DTcQvIZUYBsMUIDq-99vzFAr5hms5dY'
+image: 'https://img.alicdn.com/imgextra/i4/O1CN01ZFQBOb1kxYOYxjCyr_!!2215879134750-0-fleamarket.jpg'
 tags: [升学e网通,挂机,脚本,油猴]
 category: '教程'
 draft: false 
@@ -318,7 +318,7 @@ lang: ''
 
 点击油猴插件
 
-![](https://v2-cp.ssscdn.com/ksc2/U3lIk-WDJmK87Mcf3xx-f5_RlXUk5JIvH9byPUowWQ62IRwzkXrwvPxz9f7tvIXnP3R4ZL4GWmfc8yfse4wb-EgsS7w16E0kAKc7wVyvmv7hte71GJbZ79DkJLxWVeD5.png?pkey=AAVx6-SI5hU0IzoLMNtmmVhkBjPHc9eCDpYJnWcpV4jwlY896I2rSjMw55ZlsY7Mj5XjnuhM06SQoJFk7RLS8VuG_L5vnjJ9DE2qz4mzHhq4AL9BzLTFxllIHojFZnzMx6w)
+![](https://img.alicdn.com/imgextra/i4/O1CN011F1CRo1kxYOYOsFTA_!!2215879134750-2-fleamarket.png)
 
 点击添加新脚本
 
@@ -332,7 +332,7 @@ lang: ''
 
 当出现弹窗时 则证明程序已启动
 
-![](https://v2-cp.ssscdn.com/ksc2/zJnEJMm9AJPsS4_Mhpt7LxVctzqM_t8PlqSwtQy9Knj3EX18gcOIMvlHzXNCZPJeLPHaAOVgN3Wsw8XDY9Racn2d2MC-fFLIB1-QExVl07eVdTDtjFMVRiEaxupWoQJi.png?pkey=AAXo6-Z916OTVEugofMYqHfkkr6B6aYmNuY2d5J-y_NqUE9Wz__ln8GcDoof_Hza-o0NhzslmWzrzKOyQ4Chgt0MxoOHgaRowiAcoxYTUc6khV1rOz956XEllCsdxmiE2a0)
+![](https://img.alicdn.com/imgextra/i2/O1CN01AM0Xsd1kxYOXuXnSe_!!2215879134750-2-fleamarket.png)
 
 那你就可以愉快的挂机了！！！
 
