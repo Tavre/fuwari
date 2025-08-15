@@ -13,8 +13,6 @@ lang: ''
 
 仅供学习交流，严禁用于商业用途，一切风险皆由用户承担
 
-
-
 # 前言
 
 老子也是没得喷 nm放个假还得被这78升学e网通硬控两个小时
@@ -23,8 +21,6 @@ lang: ''
 
 经过我大晚上不断的调试 也是成功写出浏览器脚本 只要打开视频界面 然后挂机即可
 
-
-
 # 介绍
 
 ## 脚本名称：Fuck for ewt
@@ -32,8 +28,6 @@ lang: ''
 ## 脚本功能：自动切换视频、自动打开二倍速、自动点击随机检查
 
 <code>Tips：部分课程会有选择题 不管即可 1分钟后自动跳过 视频结束后也算已完成</code>
-
-
 
 # 源代码
 
@@ -46,7 +40,7 @@ lang: ''
 // @author       Tavre
 // @match        https://*.ewt360.com/*
 // @license      MIT
-// @icon         https://th.bing.com/th?id=ODLS.8f71fab6-d8fc-43f3-a56d-53f87a14d5c8&amp;w=32&amp;h=32&amp;qlt=90&amp;pcl=fffffa&amp;o=6&amp;pid=1.2
+// @icon         https://th.bing.com/th?id=ODLS.8f71fab6-d8fc-43f3-a56d-53f87a14d5c8&w=32&h=32&qlt=90&pcl=fffffa&o=6&pid=1.2
 // @grant        none
 // ==/UserScript==
 
@@ -312,8 +306,6 @@ lang: ''
 
 根据提示进行安装
 
-
-
 ## 安装插件
 
 点击油猴插件
@@ -335,8 +327,6 @@ lang: ''
 ![](https://img.alicdn.com/imgextra/i2/O1CN01AM0Xsd1kxYOXuXnSe_!!2215879134750-2-fleamarket.png)
 
 那你就可以愉快的挂机了！！！
-
-
 
 # 结尾
 
