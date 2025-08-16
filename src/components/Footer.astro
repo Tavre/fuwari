@@ -8,6 +8,21 @@ const currentYear = new Date().getFullYear();
 const siteStartDate = new Date('2025-08-04T00:00:00');
 const now = new Date();
 const runDays = Math.floor((now.getTime() - siteStartDate.getTime()) / (1000 * 60 * 60 * 24));
+
+// 计算精确到秒的运行时间
+function calculateRuntime() {
+    const now = new Date();
+    const diff = now.getTime() - siteStartDate.getTime();
+    
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+    
+    return { days, hours, minutes, seconds };
+}
+
+const runtime = calculateRuntime();
 ---
 
 <!--<div class="border-t border-[var(&#45;&#45;primary)] mx-16 border-dashed py-8 max-w-[var(&#45;&#45;page-width)] flex flex-col items-center justify-center px-6">-->
@@ -22,7 +37,38 @@ const runDays = Math.floor((now.getTime() - siteStartDate.getTime()) / (1000 * 6
         <a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://astro.build">Astro</a> &
         <a class="transition link text-[var(--primary)] font-medium" target="_blank" href="https://github.com/saicaca/fuwari">Fuwari</a>
         <div class="mt-2 text-xs text-gray-500 dark:text-gray-400">
-            已运行 <span id="site-run-days">{runDays}</span> 天
+            已运行 <span id="site-runtime">{runtime.days} 天 {runtime.hours} 小时 {runtime.minutes} 分钟 {runtime.seconds} 秒</span>
         </div>
     </div>
 </div>
+
+<script>
+    // 实时更新运行时间
+    function updateRuntime() {
+        const siteStartDate = new Date('2025-08-04T00:00:00');
+        const now = new Date();
+        const diff = now.getTime() - siteStartDate.getTime();
+        
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        
+        const runtimeElement = document.getElementById('site-runtime');
+        if (runtimeElement) {
+            runtimeElement.textContent = `${days} 天 ${hours} 小时 ${minutes} 分钟 ${seconds} 秒`;
+        }
+    }
+    
+    // 页面加载完成后开始更新
+    document.addEventListener('DOMContentLoaded', function() {
+        updateRuntime(); // 立即更新一次
+        setInterval(updateRuntime, 1000); // 每秒更新一次
+    });
+    
+    // 支持页面切换时重新初始化（适配Astro的页面切换）
+    document.addEventListener('astro:page-load', function() {
+        updateRuntime();
+        setInterval(updateRuntime, 1000);
+    });
+</script>
