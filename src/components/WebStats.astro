@@ -5,10 +5,17 @@
 <div id="web-stats-card" class="card-base p-4 mb-4 onload-animation">
     <div class="flex items-center justify-between mb-3">
         <h3 class="text-lg font-semibold text-75">网站统计</h3>
-        <div class="flex gap-1">
-            <button class="stats-tab-btn active" data-period="day">今日</button>
-            <button class="stats-tab-btn" data-period="week">本周</button>
-            <button class="stats-tab-btn" data-period="month">本月</button>
+        <div class="flex items-center gap-2">
+            <button id="refresh-btn" class="refresh-btn" title="刷新数据">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"/>
+                </svg>
+            </button>
+            <div class="flex gap-1">
+                <button class="stats-tab-btn active" data-period="day">今日</button>
+                <button class="stats-tab-btn" data-period="week">本周</button>
+                <button class="stats-tab-btn" data-period="month">本月</button>
+            </div>
         </div>
     </div>
     
@@ -44,6 +51,8 @@ class WebStatsWidget {
         this.token = 'kJ-XU-kqXmTlse6wwpI60csK1S6LjO5p';
         this.currentPeriod = 'day';
         this.data = null;
+        this.refreshInterval = null;
+        this.isRefreshing = false;
         this.init();
     }
 
@@ -51,6 +60,34 @@ class WebStatsWidget {
         await this.fetchData();
         this.bindEvents();
         this.render();
+        this.startAutoRefresh();
+    }
+
+    startAutoRefresh() {
+        // 每5分钟自动刷新一次
+        this.refreshInterval = setInterval(() => {
+            this.refreshData();
+        }, 5 * 60 * 1000);
+    }
+
+    stopAutoRefresh() {
+        if (this.refreshInterval) {
+            clearInterval(this.refreshInterval);
+            this.refreshInterval = null;
+        }
+    }
+
+    async refreshData() {
+        if (this.isRefreshing) return;
+        
+        this.isRefreshing = true;
+        this.showRefreshing();
+        
+        await this.fetchData();
+        this.render();
+        
+        this.isRefreshing = false;
+        this.hideRefreshing();
     }
 
     async fetchData() {
@@ -80,6 +117,14 @@ class WebStatsWidget {
                 this.render();
             });
         });
+
+        // 绑定刷新按钮事件
+        const refreshBtn = document.getElementById('refresh-btn');
+        if (refreshBtn) {
+            refreshBtn.addEventListener('click', () => {
+                this.refreshData();
+            });
+        }
     }
 
     render() {
@@ -147,17 +192,57 @@ class WebStatsWidget {
             </div>
         `;
     }
+
+    showRefreshing() {
+        const refreshBtn = document.getElementById('refresh-btn');
+        if (refreshBtn) {
+            refreshBtn.classList.add('refreshing');
+            refreshBtn.disabled = true;
+        }
+    }
+
+    hideRefreshing() {
+        const refreshBtn = document.getElementById('refresh-btn');
+        if (refreshBtn) {
+            refreshBtn.classList.remove('refreshing');
+            refreshBtn.disabled = false;
+        }
+    }
+
+    destroy() {
+        this.stopAutoRefresh();
+    }
+}
+
+// 全局实例管理
+let webStatsInstance = null;
+
+function initWebStats() {
+    // 清理旧实例
+    if (webStatsInstance) {
+        webStatsInstance.destroy();
+    }
+    
+    // 创建新实例
+    const statsCard = document.getElementById('web-stats-card');
+    if (statsCard) {
+        webStatsInstance = new WebStatsWidget();
+    }
 }
 
 // 页面加载时初始化
-document.addEventListener('DOMContentLoaded', () => {
-    new WebStatsWidget();
-});
+document.addEventListener('DOMContentLoaded', initWebStats);
 
 // 支持Swup页面切换
 if (window.swup) {
-    window.swup.hooks.on('page:view', () => {
-        new WebStatsWidget();
+    window.swup.hooks.on('page:view', initWebStats);
+    
+    // 页面离开时清理
+    window.swup.hooks.on('visit:start', () => {
+        if (webStatsInstance) {
+            webStatsInstance.destroy();
+            webStatsInstance = null;
+        }
     });
 }
 </script>
@@ -179,6 +264,29 @@ if (window.swup) {
 
 .stats-tab-btn.active {
     @apply bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400;
+}
+
+.refresh-btn {
+    @apply p-2 rounded-md transition-all duration-200;
+    @apply text-gray-500 hover:text-gray-700 hover:bg-gray-100;
+    @apply dark:text-gray-400 dark:hover:text-gray-200 dark:hover:bg-gray-700;
+}
+
+.refresh-btn:disabled {
+    @apply opacity-50 cursor-not-allowed;
+}
+
+.refresh-btn.refreshing svg {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .stats-item {
