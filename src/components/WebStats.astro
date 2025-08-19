@@ -1,0 +1,204 @@
+---
+// 网站统计数据组件
+---
+
+<div id="web-stats-card" class="card-base p-4 mb-4 onload-animation">
+    <div class="flex items-center justify-between mb-3">
+        <h3 class="text-lg font-semibold text-75">网站统计</h3>
+        <div class="flex gap-1">
+            <button class="stats-tab-btn active" data-period="day">今日</button>
+            <button class="stats-tab-btn" data-period="week">本周</button>
+            <button class="stats-tab-btn" data-period="month">本月</button>
+        </div>
+    </div>
+    
+    <div id="stats-content" class="grid grid-cols-2 gap-3">
+        <!-- 加载状态 -->
+        <div class="stats-loading">
+            <div class="animate-pulse">
+                <div class="h-12 bg-gray-300 dark:bg-gray-600 rounded"></div>
+            </div>
+        </div>
+        <div class="stats-loading">
+            <div class="animate-pulse">
+                <div class="h-12 bg-gray-300 dark:bg-gray-600 rounded"></div>
+            </div>
+        </div>
+        <div class="stats-loading">
+            <div class="animate-pulse">
+                <div class="h-12 bg-gray-300 dark:bg-gray-600 rounded"></div>
+            </div>
+        </div>
+        <div class="stats-loading">
+            <div class="animate-pulse">
+                <div class="h-12 bg-gray-300 dark:bg-gray-600 rounded"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+class WebStatsWidget {
+    constructor() {
+        this.apiUrl = 'https://webreport.hostidc.net/overview';
+        this.token = 'kJ-XU-kqXmTlse6wwpI60csK1S6LjO5p';
+        this.currentPeriod = 'day';
+        this.data = null;
+        this.init();
+    }
+
+    async init() {
+        await this.fetchData();
+        this.bindEvents();
+        this.render();
+    }
+
+    async fetchData() {
+        try {
+            const response = await fetch(`${this.apiUrl}?token=${this.token}`);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            this.data = await response.json();
+        } catch (error) {
+            console.error('获取统计数据失败:', error);
+            this.showError();
+        }
+    }
+
+    bindEvents() {
+        const tabBtns = document.querySelectorAll('.stats-tab-btn');
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                // 移除所有active类
+                tabBtns.forEach(b => b.classList.remove('active'));
+                // 添加active类到当前按钮
+                e.target.classList.add('active');
+                // 更新当前周期
+                this.currentPeriod = e.target.dataset.period;
+                // 重新渲染
+                this.render();
+            });
+        });
+    }
+
+    render() {
+        const container = document.getElementById('stats-content');
+        if (!container || !this.data) return;
+
+        const periodData = this.data[this.currentPeriod];
+        if (!periodData || !periodData.items) {
+            this.showError();
+            return;
+        }
+
+        const statsHtml = periodData.items.map(item => {
+            const label = this.getLabelText(item.label);
+            const value = item.value || '0';
+            const icon = this.getIcon(item.label);
+            
+            return `
+                <div class="stats-item bg-gray-50 dark:bg-gray-800/50 rounded-lg p-3 transition-all hover:bg-gray-100 dark:hover:bg-gray-700/50">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <div class="w-8 h-8 rounded-md bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
+                                ${icon}
+                            </div>
+                            <div>
+                                <div class="text-xs text-50">${label}</div>
+                                <div class="text-lg font-semibold text-75">${value}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }).join('');
+
+        container.innerHTML = statsHtml;
+    }
+
+    getLabelText(label) {
+        const labelMap = {
+            'UV': '独立访客',
+            'PV': '页面浏览',
+            'IP': '独立IP',
+            'bounceRate': '跳出率'
+        };
+        return labelMap[label] || label;
+    }
+
+    getIcon(label) {
+        const iconMap = {
+            'UV': '<svg class="w-4 h-4 text-blue-600 dark:text-blue-400" fill="currentColor" viewBox="0 0 20 20"><path d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"/></svg>',
+            'PV': '<svg class="w-4 h-4 text-green-600 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/></svg>',
+            'IP': '<svg class="w-4 h-4 text-purple-600 dark:text-purple-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm0 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V8zm0 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1v-2z" clip-rule="evenodd"/></svg>',
+            'bounceRate': '<svg class="w-4 h-4 text-orange-600 dark:text-orange-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/></svg>'
+        };
+        return iconMap[label] || '<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>';
+    }
+
+    showError() {
+        const container = document.getElementById('stats-content');
+        if (!container) return;
+        
+        container.innerHTML = `
+            <div class="col-span-2 text-center py-4">
+                <div class="text-50 text-sm">暂无统计数据</div>
+            </div>
+        `;
+    }
+}
+
+// 页面加载时初始化
+document.addEventListener('DOMContentLoaded', () => {
+    new WebStatsWidget();
+});
+
+// 支持Swup页面切换
+if (window.swup) {
+    window.swup.hooks.on('page:view', () => {
+        new WebStatsWidget();
+    });
+}
+</script>
+
+<style>
+#web-stats-card {
+    transition: all 0.3s ease;
+}
+
+#web-stats-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.stats-tab-btn {
+    @apply px-2 py-1 text-xs rounded-md transition-all;
+    @apply text-50 hover:text-75 hover:bg-gray-100 dark:hover:bg-gray-700;
+}
+
+.stats-tab-btn.active {
+    @apply bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400;
+}
+
+.stats-item {
+    transition: all 0.2s ease;
+}
+
+.stats-loading {
+    @apply bg-gray-50 dark:bg-gray-800/50 rounded-lg p-3;
+}
+
+.animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: .5;
+    }
+}
+</style>
