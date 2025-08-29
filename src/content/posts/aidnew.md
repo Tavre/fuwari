@@ -33,8 +33,6 @@ CNB 基于 **Docker 生态**，对环境、缓存和插件进行了抽象，采
 
 ![](https://img.alicdn.com/imgextra/i2/O1CN01rkj1Ew1kxYOX3w7Hp_!!2215879134750-49-fleamarket.webp)
 
-
-
 登录之后 点击下方仓库链接
 
 [CNB仓库](https://cnb.cool/beilinmo/SD-WebUI_ForgeUI-EasyJoy)
@@ -73,8 +71,6 @@ bash /workspace/res/启动Forge.sh
 
 此时点击哪一个 都可以进入webui 这样我们就可以开始作图了！
 
-
-
 ## 模型下载
 
 在终端点击右上角的“+”号
@@ -95,16 +91,10 @@ cd /workspace/models/Stable-diffusion
 wget https://liblibai-online.liblib.cloud/web/model/d2e30dc822bb4359b74f93cb5e455e32/95878f817cc37c557013662341ca02b991e4ff04ae33719345fd09cb1d22923a.safetensors?auth_key=1755001041-48f1855bde32408b8f44b20903dd46c2-0-50588881ea7c9dd48e9fdd47fa8dd4ac&attname=potion%20pot%E4%B8%A8%E7%81%B5%E8%8D%AF%E9%94%85_3.0.safetensors
 ```
 
-
-
 下载完成后 在webui的右上角 模型选择的右边 点击刷新 再进行模型选择即可显示你下载的模型
-
-
 
 # 声明
 
 仅供学习交流，严禁用于商业用途，严禁违规违法犯罪行为，自行承担责任
-
-
 
 如有版权问题 请联系tavre@qq.com 我将在收到邮件后第一时间删除该文章
