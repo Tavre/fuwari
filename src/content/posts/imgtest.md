@@ -31,7 +31,9 @@ GITHUB地址：[Tavre/goofish_img: 一个使用“闲鱼创作者平台”接口
 
 葫芦侠有防盗链  解决办法：
 
+```
 在</head>上添加一行这个代码: <meta name="referrer" content="never">
+```
 
 <head>
 <meta name="referrer" content="never">
