@@ -2,7 +2,7 @@
 title: 图床测试
 published: 2025-10-20
 description: '本篇用于测试我的图床接口图片链接是否设置防盗链'
-image: 'https://tiebapic.baidu.com/tieba/pic/item/810a19d8bc3eb135f01d27ace01ea8d3fc1f44cb.jpg?tbpicau=2025-10-22-05_b7c5a745e1cc72fd90817239cc14f1d9'
+image: 'https://img.alicdn.com/imgextra/i4/O1CN01xtaJLj1kxYPVvJ2qB_!!2215879134750-0-fleamarket.jpg'
 tags: [图床,技术,大厂]
 category: '技术'
 draft: false 
